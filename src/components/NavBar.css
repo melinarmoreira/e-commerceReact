@@ -2,14 +2,17 @@
 
 .brand {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     margin: 0px 10px;
 }
 
 .navStyle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin: 0px;
     background-color: rgb(255, 245, 101);
-    height: 30vh;
+    height: auto;
 }
 .linkNav {  
     list-style: none;

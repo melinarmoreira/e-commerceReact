@@ -1,0 +1,19 @@
+
+.containerIcon {
+    width: fit-content;
+    color: black;
+    font-size: 20px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.count  {
+    font-size: 15px;
+    padding: 0px 5px;
+}
+
+.iconCart:hover {
+    transform: scale(1.1);  
+}
