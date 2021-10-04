@@ -2,6 +2,7 @@ import React from "react";
 import './NavBar.css';
 import CartWidget from "./CartWidget";
 
+
 function NavBar () {
     return (
         <nav className="navStyle">
@@ -26,9 +27,11 @@ function NavBar () {
                         </li>
                         {<CartWidget/>}
                     </ul>
-                </div>
+            </div>
         </nav>
     )
+
 }
 
 export default NavBar;
+
