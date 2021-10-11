@@ -2,8 +2,7 @@
 import React from "react";
 import Image from "./assets/monstera.jpg"
 import "./Item.css"
-// import Monstera from "./assets/Monstera"
-// import ItemList from "./ItemList";
+
 
 
 const Item = ({data}) => {

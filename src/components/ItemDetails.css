@@ -1,0 +1,13 @@
+.detailContainer {
+    background-color: rgb(235, 252, 86);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+
+}
+
+img {
+    max-width: 50%;
+}

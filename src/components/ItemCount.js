@@ -26,7 +26,7 @@ const ItemCount = () => {
     }
     return (
         <div className="containerCounter">
-                <h2>Mi contador</h2>
+                <p>Añadir item al carrito</p>
                 <p className="counterStyle">{counter}</p>
                 <div>
                 <button className="buttonCounterUp" onClick={counterUp}>Add</button>

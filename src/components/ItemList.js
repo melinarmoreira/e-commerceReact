@@ -14,7 +14,7 @@ const ItemList  = () => {
             resolve(true);
         })
         users.then( () => {
-      
+    
         fetch("https://jsonplaceholder.typicode.com/comments?postId=1")
         .then(response => response.json())
         .then(data => setInfoUsers(data))
