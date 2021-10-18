@@ -1,31 +1,45 @@
 // import React, { useEffect } from "react";
 import  Item from "./Item";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ItemList.css"
+import { Link } from "react-router-dom";
+// import ItemDetail from "./ItemDetail";
+// import { useParams } from "react-router";
 
 
 const ItemList  = () => {
 
     const [infoUsers, setInfoUsers] = useState([]);
+    
 
-    setTimeout(() => {
+    useEffect(() => {
 
         const users = new Promise((resolve) => {
             resolve(true);
         })
         users.then( () => {
     
-        fetch("https://jsonplaceholder.typicode.com/comments?postId=1")
+        fetch("https://jsonplaceholder.typicode.com/users")
         .then(response => response.json())
         .then(data => setInfoUsers(data))
         })
-    }, 2000);  
+    }, []);  
+    console.log(infoUsers)
     
     return(
         <div className="containerItem">
             {infoUsers.map((infoUser) => {
             return (
-            <Item data={infoUser}/>
+                
+                <div key={infoUser.id}>
+                {/* <Link to=`/detail/${infoUser.id}`> */}
+                    {/* // <Link to ={`/detail/:${infoUser.id}`}> */}
+                    {/* <Link to = {`/detail/${infoUser.id}`}> */}
+                    <Item data={infoUser}/>
+                    {/* <ItemDetail/> */}
+                    {/* </Link> */}
+
+                </div>
         )})}
         </div>
 )
