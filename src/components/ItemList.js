@@ -2,7 +2,7 @@
 import  Item from "./Item";
 import { useEffect, useState } from "react";
 import "./ItemList.css"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import ItemDetail from "./ItemDetail";
 // import { useParams } from "react-router";
 
@@ -32,13 +32,7 @@ const ItemList  = () => {
             return (
                 
                 <div key={infoUser.id}>
-                {/* <Link to=`/detail/${infoUser.id}`> */}
-                    {/* // <Link to ={`/detail/:${infoUser.id}`}> */}
-                    {/* <Link to = {`/detail/${infoUser.id}`}> */}
                     <Item data={infoUser}/>
-                    {/* <ItemDetail/> */}
-                    {/* </Link> */}
-
                 </div>
         )})}
         </div>
