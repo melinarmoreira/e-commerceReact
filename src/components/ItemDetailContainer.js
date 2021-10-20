@@ -2,15 +2,12 @@ import React from "react";
 import "./ItemListContainer.css";
 import ItemDetail from "./ItemDetail";
 
-
 const ItemDetailContainer = () => {
-
-return (
+  return (
     <div>
-        <ItemDetail/>
+      <ItemDetail />
     </div>
-)
-
-}
+  );
+};
 
 export default ItemDetailContainer;
