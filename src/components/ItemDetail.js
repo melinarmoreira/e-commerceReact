@@ -5,9 +5,32 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-const ItemDetail = () => {
+const ItemDetail = (dataCounter) => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
+
+  // let [counter, setCounter] = useState(0);
+  // let [stock, setStock] = useState(dataCounter.id);
+
+  //   const counterUp = (e) => {
+  //   if (stock >= 1) {
+  //     setCounter(counter + 1);
+  //     setStock(stock - 1);
+  //     cart.push(dataCounter);
+  //   } else {
+  //     alert("No hay stock");
+  //   }
+  // }
+
+  // const counterDown = (e) => {
+  //   if (counter >= 1) {
+  //     setCounter(counter - 1);
+  //     setStock(stock + 1);
+  //     cart.pop(dataCounter);
+  //   } else {
+  //     alert("No hay más items para eliminar");
+  //   }
+  // };
 
   // let productsID = match.params.id;
   const [infoProduct, setInfoProduct] = useState([]);
@@ -27,7 +50,7 @@ const ItemDetail = () => {
 
   const finish = () => {
     setTimeout(() => setIsFinished(false), 3000);
-    console.log(cart);
+  
   };
 
   return (

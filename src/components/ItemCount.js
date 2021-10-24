@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./ItemCount.css";
+import { ItemsContext } from "./CartContext";
 
-function ItemCount({ dataCounter, cart }) {
-  let [counter, setCounter] = useState(0);
+
+
+function ItemCount({dataCounter}) {
+  const [carrito, clear, counter, setCounter] = useContext(ItemsContext);
+  console.log(carrito);
   let [stock, setStock] = useState(dataCounter.id);
 
   function counterUp(e) {
     if (stock >= 1) {
       setCounter(counter + 1);
       setStock(stock - 1);
-      cart.push(dataCounter);
+      carrito.push(dataCounter);
     } else {
       alert("No hay stock");
     }
@@ -19,7 +23,9 @@ function ItemCount({ dataCounter, cart }) {
     if (counter >= 1) {
       setCounter(counter - 1);
       setStock(stock + 1);
-      cart.pop(dataCounter);
+      // cart.pop(dataCounter);
+      carrito.pop(dataCounter);
+      console.log(carrito)
     } else {
       alert("No hay más items para eliminar");
     }
@@ -36,6 +42,7 @@ function ItemCount({ dataCounter, cart }) {
         <button className="buttonCounterDown" onClick={counterDown}>
           Remove
         </button>
+        <button className="buttonClear" onClick={clear}>Clear cart</button>
       </div>
     </div>
   );
