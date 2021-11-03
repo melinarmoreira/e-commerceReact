@@ -1,0 +1,15 @@
+.itemCard {
+    width: 400px;
+    background-color: lightyellow;
+    margin: 10px;
+}
+.imgCard {
+    max-width: 350px;
+}
+.speciesCard {
+    font-weight: bold;
+}
+.descriptionCard {
+    font-size: 13px;
+    max-width: 350px;
+}

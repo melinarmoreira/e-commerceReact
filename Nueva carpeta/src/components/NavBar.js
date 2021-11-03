@@ -2,12 +2,8 @@ import React from "react";
 import "./NavBar.css";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ItemsContext } from "./CartContext";
 
-const NavBar = () => {
-  const [carrito] = useContext(ItemsContext);
-
+function NavBar() {
   return (
     <nav className="navStyle">
       <Link to="/Home">
@@ -28,11 +24,11 @@ const NavBar = () => {
             <input type="search" placeholder="search"></input>
             <button className="buttonSearch">Search</button>
           </li>
-          {carrito.length !== 0 ? <CartWidget /> : null}
+          {<CartWidget />}
         </ul>
       </div>
     </nav>
   );
-};
+}
 
 export default NavBar;

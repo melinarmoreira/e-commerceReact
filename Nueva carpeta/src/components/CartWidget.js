@@ -3,17 +3,14 @@ import './CartWidget.css';
 import {FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import { ItemsContext } from "./CartContext";
-import { Link } from "react-router-dom";
 
 
 
 function CartWidget () {
-    const [carrito] = useContext(ItemsContext);
+    const {carrito} = useContext(ItemsContext);
     return (
         <div className="containerIcon">
-            <Link to="/Cart/">
-                <FontAwesomeIcon className="iconCart" icon={faShoppingCart}/>
-            </Link>
+            <FontAwesomeIcon className="iconCart" icon={faShoppingCart}/>
             <p className="count">{[carrito.length]}</p>
         </div>
     )

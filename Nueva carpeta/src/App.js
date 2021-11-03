@@ -8,26 +8,8 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Home from "./views/Home";
 import Cart from "./components/Cart";
-import React, { useState, useEffect }from "react"
-// import { collection, getDocs } from "firebase/firestore"
-// import { db } from "./firebase";
 
 function App() {
-  // const [productsData, setProductsData] = useState([])
-  // console.log(productsData)
-  //  useEffect(() => {
-  //   const docs = [];
-  //    const dataReq = async() => {
-  //      const dataFirebase = await getDocs(collection(db, "products"));
-  //      dataFirebase.forEach(element => {
-  //       // console.log(element.data())
-  //       docs.push({...element.data()})
-  //      });
-  //      setProductsData(docs);
-  //    }
-  //    dataReq();
-  //  }, [])
-
   return (
     <ItemsProvider>
       <Router>

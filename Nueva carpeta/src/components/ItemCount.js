@@ -1,37 +1,35 @@
 import { useState, useContext } from "react";
 import "./ItemCount.css";
 import { ItemsContext } from "./CartContext";
-// import Cart from "./Cart";
 
-function ItemCount({ dataCounter }) {
-  let [carrito, setCarrito, counter, setCounter] = useContext(ItemsContext);
-  let [stock, setStock] = useState(dataCounter.stock);
 
-  const clearCart = () => {
-    setCarrito([]);
-    setCounter(0);
-    console.log(carrito);
-  };
+
+function ItemCount({dataCounter}) {
+  const {carrito, clear, counter, setCounter, setCarrito} = useContext(ItemsContext);
+  console.log(carrito);
+  let [stock, setStock] = useState(dataCounter.id);
+
+  function counterUp(e) {
+    if (stock >= 1) {
+      setCounter(prevCount => prevCount + 1);
+      setStock(stock - 1);
+      carrito.push(dataCounter)
+      setCarrito(carrito => carrito)
+      console.log(carrito)
+    } else {
+      alert("No hay stock");
+    }
+  }
 
   const counterDown = (e) => {
-    e.preventDefault();
     if (counter >= 1) {
       setCounter(counter - 1);
       setStock(stock + 1);
-      // carrito.pop(dataCounter);
+      // cart.pop(dataCounter);
+      carrito.pop(dataCounter);
+      console.log(carrito)
     } else {
       alert("No hay más items para eliminar");
-    }
-  };
-
-  const counterUp = (e) => {
-    e.preventDefault();
-    if (stock > 0) {
-      setCounter(counter + 1);
-      setStock(stock - 1);
-      carrito.push(dataCounter);
-    } else {
-      alert("No hay stock");
     }
   };
 
@@ -46,9 +44,7 @@ function ItemCount({ dataCounter }) {
         <button className="buttonCounterDown" onClick={counterDown}>
           Remove
         </button>
-        <button className="buttonClear" onClick={clearCart}>
-          Clear cart
-        </button>
+        <button className="buttonClear" onClick={clear}>Clear cart</button>
       </div>
     </div>
   );

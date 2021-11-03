@@ -1,28 +1,45 @@
 import Item from "./Item";
 import { useEffect, useState } from "react";
 import "./ItemList.css";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
+
+
 
 const ItemList = () => {
-  const [infoUsers, setInfoUsers] = useState([]);
+  // const [infoUsers, setInfoUsers] = useState([]);
 
-  useEffect(() => {
-    const users = new Promise((resolve) => {
-      resolve(true);
-    });
-    users.then(() => {
-      fetch("https://jsonplaceholder.typicode.com/users")
-        .then((response) => response.json())
-        .then((data) => setInfoUsers(data));
-    });
-  }, []);
-  console.log(infoUsers);
+  // useEffect(() => {
+  //   const users = new Promise((resolve) => {
+  //     resolve(true);
+  //   });
+  //   users.then(() => {
+  //     fetch("https://jsonplaceholder.typicode.com/users")
+  //       .then((response) => response.json())
+  //       .then((data) => setInfoUsers(data));
+  //   });
+  // }, []);
+
+    const [infoProd, setInfoProd] = useState([])
+  // console.log(productsData)
+   useEffect(() => {
+    const docs = [];
+     const dataReq = async() => {
+       const dataFirebase = await getDocs(collection(db, "products"));
+       dataFirebase.forEach(element => {
+        docs.push({...element.data()})
+       });
+       setInfoProd(docs);
+     }
+     dataReq();
+   }, [])
 
   return (
     <div className="containerItem">
-      {infoUsers.map((infoUser) => {
+      {infoProd.map((info) => {
         return (
-          <div key={infoUser.id}>
-            <Item data={infoUser} />
+          <div key={info.id}>
+            <Item data={info} />
           </div>
         );
       })}

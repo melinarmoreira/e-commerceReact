@@ -2,13 +2,19 @@ import React, { createContext, useState } from "react";
 export const ItemsContext = createContext();
 
 export const ItemsProvider = ({ children }) => {
-  let [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState([]);
   let [counter, setCounter] = useState(0);
-  let [itemsInCart, setItemsInCart] = useState(false);
+  // let [stock, setStock] = useState(dataCounter.id);
+
+  const clear = () => {
+    setCarrito([]);
+    setCounter(0);
+    console.log(carrito);
+  };
 
   return (
     <ItemsContext.Provider
-      value={[carrito, setCarrito, counter, setCounter, itemsInCart, setItemsInCart]}
+      value={{carrito, setCarrito, clear, counter, setCounter}}
     >
       {children}
     </ItemsContext.Provider>
