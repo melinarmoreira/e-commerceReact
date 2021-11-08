@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./ItemList.css";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
-
+// import { ItemsContext } from "./CartContext";
 
 
 const ItemList = () => {
@@ -19,9 +19,9 @@ const ItemList = () => {
   //       .then((data) => setInfoUsers(data));
   //   });
   // }, []);
-
+   
     const [infoProd, setInfoProd] = useState([])
-  // console.log(productsData)
+  // // console.log(productsData)
    useEffect(() => {
     const docs = [];
      const dataReq = async() => {
@@ -38,7 +38,7 @@ const ItemList = () => {
     <div className="containerItem">
       {infoProd.map((info) => {
         return (
-          <div key={info.id}>
+          <div key={info.id1}>
             <Item data={info} />
           </div>
         );

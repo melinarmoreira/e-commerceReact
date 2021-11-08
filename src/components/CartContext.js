@@ -1,10 +1,15 @@
-import React, { createContext, useState } from "react";
-export const ItemsContext = createContext();
+import React, { createContext, useState, useEffect } from "react";
 
+
+export const ItemsContext = createContext();
 export const ItemsProvider = ({ children }) => {
   let [carrito, setCarrito] = useState([]);
   let [counter, setCounter] = useState(0);
   let [itemsInCart, setItemsInCart] = useState(false);
+
+
+
+
 
   return (
     <ItemsContext.Provider

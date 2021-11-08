@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 
 const Item = ({data}) => {
 
+    
     return(
         
         <div className="itemCard">
-            <Link to={`/detail/${data.id}`}>
+            <Link to={`/detail/${data.id1}`}>
             <h2>{data.title}</h2>
             <img src={data.img} className="imgCard" alt="monstera"/>
             <p className="speciesCard"> Cuidados:  {data.cuidados}</p>

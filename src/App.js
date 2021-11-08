@@ -36,7 +36,7 @@ function App() {
             <NavBar />
           </header>
           <Switch>
-            <Route path="/detail/:id" component={ItemDetailContainer} />
+            <Route path="/detail/:id1" component={ItemDetailContainer} />
             <Route path="/products" component={ItemListContainer} />
             <Route path="/Home" component={Home} />
             <Route path="/Cart" component={Cart} />
