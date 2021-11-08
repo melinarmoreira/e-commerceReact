@@ -21,7 +21,6 @@ const CartDetail = ({ data }) => {
         <tbody>
           <tr>
             <th>Item</th>
-            <th>Description</th>
             <th>Price</th>
             <th>Delete</th>
           </tr>
