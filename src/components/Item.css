@@ -1,15 +1,44 @@
 .itemCard {
-    width: 400px;
-    background-color: lightyellow;
-    margin: 10px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.815);
+  margin: 5px 10px;
+  padding-top: 15px;
+  height: 500px;
+  vertical-align: center;
+  position: relative;
 }
 .imgCard {
-    max-width: 350px;
+  max-width: 250px;
+  margin: 10px;
 }
 .speciesCard {
-    font-weight: bold;
+  font-weight: bold;
 }
 .descriptionCard {
-    font-size: 13px;
-    max-width: 350px;
+  font-size: 13px;
+  max-width: 350px;
+}
+.itemTitle {
+  font-size: 15px;
+  font-weight: 100;
+  color: black;
+}
+.buttonDetail {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+.itemPrice {
+  background-color: rgb(118, 199, 108);
+  font-weight: 500;
+  font-size: 15px;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 15px;
+  position: absolute;
+  right: 60px;
+  top: 0px;
+  font-weight: bold;
+  color: black;
 }

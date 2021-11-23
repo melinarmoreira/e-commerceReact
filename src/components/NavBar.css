@@ -1,38 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
-
 .brand {
   display: flex;
   align-items: flex-start;
-  margin: 0px 10px;
+  padding: 0px;
+  max-height: 150px;
 }
-
 .navStyle {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0px;
-  background-color: rgb(255, 245, 101);
-  height: auto;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  height: 15vh;
+  background-size: cover;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 .linkNav {
   list-style: none;
   margin: 30px 50px;
+  color: black;
 }
-
 ul {
   display: flex;
   flex-direction: row;
   align-content: space-around;
   justify-content: flex-end;
 }
-
 input {
   border-radius: 10px;
   font-family: "Poppins", sans-serif;
-  /* border: none; */
   margin: 0px 10px;
 }
-
 .buttonSearch {
   background-color: black;
   color: white;
@@ -40,12 +39,10 @@ input {
   font-family: "Poppins", sans-serif;
   border: none;
 }
-
 a {
   text-decoration: none;
-  color: black;
+  color: rgb(74, 129, 74);
 }
-
 .linkNav:hover {
-  color: white;
+  color: black;
 }

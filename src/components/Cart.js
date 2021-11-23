@@ -1,20 +1,17 @@
 import React, { useContext, useState } from "react";
 import { ItemsContext } from "./CartContext";
 import CartDetail from "./CartDetail";
-// import { Form } from "./Form";
 import { Link } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "./firebase";
-// import * as firebase from "firebase/app"
-// import "firebase/firestore"
+import "./Cart.css";
 
 const Cart = () => {
-  let [carrito] = useContext(ItemsContext);
+  let { carrito } = useContext(ItemsContext);
   let [total, setTotal] = useState(0);
   let [finalizarCompra, SetFinalizarCompra] = useState(false);
   const [idCompra, setIdCompra] = useState("");
   let [ordenCompra, setOrdenCompra] = useState(false);
-  // const [productos, setProductos] = useState([])
 
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +26,7 @@ const Cart = () => {
   };
 
   const addPrice = (e) => {
-    SetFinalizarCompra(true);
+    SetFinalizarCompra(!finalizarCompra);
     e.preventDefault();
     carrito.forEach((element) => {
       setTotal((total = total + parseInt(element.price)));
@@ -53,51 +50,74 @@ const Cart = () => {
 
   if (carrito.length === 0) {
     return (
-      <div>
-        <p>No tienes items en tu carrito</p>
+      <div className="no-items">
+        <p>No tienes items en tu carrito ☹ </p>
         <Link to="/Products">
-          <button>Ver productos</button>
+          <button className="ver-productos">Ver productos</button>
         </Link>
       </div>
     );
   } else {
     return (
-      <div>
-        <CartDetail data={carrito}></CartDetail>
-        <button onClick={addPrice}>Finalizar</button>
-        <p>Total ${total}</p>
-        {finalizarCompra ? (
+      <div className="container-cart-detail">
+        {finalizarCompra ? null : (
           <div>
-            <form onSubmit={registrar}>
-              <label for="fname">First name:</label>
-              <input
-                type="text"
-                id="fname"
-                name="nombre"
-                value={nombre}
-                onChange={handleInputChangeName}
-              ></input>
-              <label for="email">email</label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={email}
-                onChange={handleInputChangeEmail}
-              ></input>
-              <button type="submit" onClick={buttonOrderCompra}>
-                Terminar compra
-              </button>
+            <CartDetail data={carrito}></CartDetail>
+            <button className="finalizar-compra" onClick={addPrice}>
+              Finalizar
+            </button>
+          </div>
+        )}
+        {finalizarCompra ? (
+          <div
+            className={finalizarCompra ? "visible" : "hidden"}
+          >
+            <form className="form" onSubmit={registrar}>
+              <h3> Tus datos </h3>
+              <div>
+                <label htmlFor="fname"></label>
+                <input
+                  placeholder="Nombre"
+                  type="text"
+                  id="fname"
+                  name="nombre"
+                  value={nombre}
+                  onChange={handleInputChangeName}
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="email"></label>
+                <input
+                  placeholder="Email"
+                  type="text"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={handleInputChangeEmail}
+                ></input>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="button-submit"
+                  onClick={buttonOrderCompra}
+                >
+                  Terminar compra
+                </button>
+              </div>
               {ordenCompra ? (
                 <>
-                  <h4> Tu numero de orden es #{idCompra}</h4>
+                  <p> Tu código es #{idCompra}</p>
                   <p>
                     Gracias por tu compra {nombre}, te enviaremos tu comprobante
-                    al correo {email}{" "}
+                    al correo {email}
                   </p>
                 </>
               ) : null}
             </form>
+            <Link to="/products">
+              <button className="volver-inicio">Volver al inicio</button>
+            </Link>
           </div>
         ) : null}
       </div>

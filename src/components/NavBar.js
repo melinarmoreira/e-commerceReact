@@ -4,14 +4,15 @@ import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ItemsContext } from "./CartContext";
+import logo from "./assets/react-js-gif.gif";
 
 const NavBar = () => {
-  const [carrito] = useContext(ItemsContext);
+  const { carrito } = useContext(ItemsContext);
 
   return (
     <nav className="navStyle">
       <Link to="/Home">
-        <h1 className="brand">Mi e-commerce</h1>
+        <img className="brand" src={logo} alt="logo"></img>
       </Link>
       <div>
         <ul>
@@ -19,14 +20,14 @@ const NavBar = () => {
             Home
           </Link>
           <Link to="/Products" className="linkNav">
-            Products
+            Productos
           </Link>
           <Link to="/Cart" className="linkNav">
-            Cart
+            Carrito
           </Link>
           <li className="linkNav" id="searchNav">
-            <input type="search" placeholder="search"></input>
-            <button className="buttonSearch">Search</button>
+            <input type="Buscar" placeholder="Buscar"></input>
+            <button className="buttonSearch">Buscar</button>
           </li>
           {carrito.length !== 0 ? <CartWidget /> : null}
         </ul>

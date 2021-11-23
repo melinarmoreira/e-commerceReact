@@ -1,33 +1,21 @@
-// import Image from "./assets/monstera.jpg";
 import ItemCount from "./ItemCount";
 import "./ItemDetails.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
+import { ItemsContext } from "./CartContext";
 
 const ItemDetail = () => {
   const { id1 } = useParams();
-  const [infoProduct, setInfoProduct] = useState([]);
   const [isFinished, setIsFinished] = useState(true);
   const [cart] = useState([]);
-  // const [productSelected, setProductSelected] = useState([]);
   let [filtro, setFiltro] = useState([]);
+  const { infoProd } = useContext(ItemsContext);
 
   useEffect(() => {
-    const docs = [];
-    const dataReq = async () => {
-      const dataFirebase = await getDocs(collection(db, "products"));
-      dataFirebase.forEach((element) => {
-        docs.push({ ...element.data() });
-      });
-      setInfoProduct(docs);
-      filtro = infoProduct.find((x) => x.id1 == id1);
-      setFiltro({ ...filtro });
-    };
-    dataReq();
-  }, [filtro]);
+    filtro = infoProd.find((x) => x.id1 === Number(id1));
+    setFiltro({ ...filtro });
+  }, []);
 
   const finish = () => {
     setTimeout(() => setIsFinished(false), 3000);
@@ -35,23 +23,27 @@ const ItemDetail = () => {
 
   return (
     <div className="detailContainer">
-      <div key={filtro.id1} data={filtro}>
-        <h2> ID:{filtro.title}</h2>
-        <img src={filtro.img} alt={filtro.title}></img>
-        <p>{filtro.description}</p>
-        <p> ${filtro.price} </p>
-        <p>{filtro.stock} unidades disponibles</p>
-
-        <div>
+      <div key={filtro.id1} data={filtro} className="flexbox-item-detail">
+        <div className="detailDescription">
+          <h2>{filtro.title}</h2>
+          <p>{filtro.description}</p>
+          <div className="cuidados-detail">
+            <h3>Cuidados </h3>
+            <p>{filtro.cuidados}</p>
+          </div>
+        </div>
+        <div className="detailImage">
+          <img className="imgDetail" src={filtro.img} alt={filtro.title}></img>
+        </div>
+        <div className="detailCount">
           {isFinished && <ItemCount dataCounter={filtro} cart={cart} />}
           <Link to="/Cart">
-            <button onClick={finish}>Ir al carrito</button>
+            <button className="buttonFinish" onClick={finish}>
+              Ir al carrito
+            </button>
           </Link>
         </div>
       </div>
-      {/* )
-       )
-       }) */}
     </div>
   );
 };
